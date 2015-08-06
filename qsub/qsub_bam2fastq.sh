@@ -16,7 +16,7 @@ mkdir -p $outdir && cd $outdir
 for d in $(ls -1 $indir); do
 	if [ -d "$indir/$d" ]; then
 		if [ ! -f "$outdir/$d/*.fastq.gz" ]; then
-			echo "Processing $outdir/$d ..."
+			echo "Processing $indir/$d ..."
 			mkdir -p $outdir/$d && cd $outdir/$d
 			grep "^#\!\|^#PBS" $binpath/bam2fastq_diskless_mem4g.pbs \
 				> job.pbs
