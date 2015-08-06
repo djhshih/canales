@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -N fastqc
+#PBS -V
+#PBS -l nodes=1:ppn=1,vmem=4g,walltime=1:00:00
+set -e
+
+# Generate FastQC report
+
+if [ "$#" -ne 1 ]; then
+	echo "usage: script <infile>"
+	exit
+fi
+
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
+infpath=$(readlink -f $1)
+
+nixroot fastqc --outdir . $infpath
