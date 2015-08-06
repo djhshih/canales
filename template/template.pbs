@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N JOB_NAME
+#PBS -V
+#PBS -l nodes=1:ppn=3,vmem=60g,gres=localhd:50,walltime=20:00:00
+set -e
+
+# TITLE
+
+if [ "$#" -ne 1 ]; then
+	echo "usage: script <infile>"
+	exit
+fi
+
+infpath=$1
+infname=${infile##*/}
+outfstem=${infname%%.*}
+
