@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -N keep5p50bp
+#PBS -V
+#PBS -l nodes=1:ppn=1,vmem=1g,walltime=1:00:00
+set -e
+
+# Keep 50 bp from the 5' end of reads
+
+if [ "$#" -ne 1 ]; then
+	echo "usage: script <infile>"
+	exit
+fi
+
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
+infpath=$(readlink -f $1)
+infname=${infpath##*/}
+outfstem=${infname%%.*}
+outfname=${outfstem}_5p50bp.fastq.gz
+
+$scriptpath/keep5pnbp.sh $infpath $outfname 50
