@@ -14,7 +14,6 @@ outdir=$(readlink -f $2)
 
 mkdir -p $outdir && cd $outdir
 
-# Use only the R1 reads
 for d in $(ls -1 $indir); do
 	if [ -d "$indir/$d" ]; then
 		echo "Processing $indir/$d ..."
