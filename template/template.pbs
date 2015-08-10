@@ -12,6 +12,6 @@ if [ "$#" -ne 1 ]; then
 fi
 
 infpath=$1
-infname=${infile##*/}
+infname=${infpath##*/}
 outfstem=${infname%%.*}
 
