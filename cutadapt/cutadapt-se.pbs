@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -N cutadapt-se
+#PBS -V
+#PBS -l nodes=1:ppn=1,vmem=4g,walltime=2:00:00
+set -e
+
+# Adaptor trimming and quality trimming for single-end reads
+
+if [ "$#" -ne 1 ]; then
+	echo "usage: script <infile>"
+	exit
+fi
+
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
+infpath=$(readlink -f $1)
+infname=${infpath##*/}
+outfstem=${infname%%.*}
+
+# Trim TruSeq Indexed Adapter
+# (sequence is prefixed with 'A' since library preparation inserts 'A' before sequence)
+# Trim 5' and 3' ends with phred score threshold of 5
+# Remove flanking N from each read
+# Discard reads shorter than 20 nt
+cutadapt \
+	-a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC \
+	-q 5,5 \
+	--trim-n \
+	--minimum-length 20 \
+	-o ${outfstem}_cutadapt.fastq.gz \
+	$infpath
+
