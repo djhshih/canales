@@ -11,6 +11,9 @@ if [ "$#" -ne 1 ]; then
 	exit
 fi
 
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
 infpath=$1
 infname=${infpath##*/}
 outfstem=${infname%%.*}
