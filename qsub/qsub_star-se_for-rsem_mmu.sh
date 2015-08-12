@@ -28,7 +28,7 @@ for d in $(ls -1 $indir); do
 					echo "set -e" >> $fname.job.pbs
 					echo "cd $(pwd)" >> $fname.job.pbs
 					echo "$script $f" >> $fname.job.pbs
-					echo 'echo "$?" > .$fname.done' >> $fname.job.pbs
+					echo "echo \$? > .$fname.done" >> $fname.job.pbs
 					qsub $fname.job.pbs
 				fi
 			fi
