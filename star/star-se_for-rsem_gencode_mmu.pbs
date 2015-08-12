@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -N star_for-rsem_gencode_mmu
+#PBS -N star-se_for-rsem_gencode_mmu
 #PBS -V
 #PBS -l nodes=1:ppn=8,vmem=60g,gres=localhd:50,walltime=24:00:00
 set -e
