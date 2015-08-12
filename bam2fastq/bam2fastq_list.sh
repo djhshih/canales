@@ -6,7 +6,7 @@ infile=$1
 
 if [ "$#" -ne 1 ]; then
 	echo "usage script <indir>"
-	exit
+	exit 1
 fi
 
 for x in $(cat $infile); do

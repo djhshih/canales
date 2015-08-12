@@ -6,7 +6,7 @@ set -e
 
 if [ "$#" -ne 1 ]; then
 	echo "usage: script <in.bam>"
-	exit
+	exit 1
 fi
 
 infile=$1

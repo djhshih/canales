@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ "$#" -ne 3 ]; then
-	echo "usage: script <fastq.gz> <species> <gencode_version>"
-	exit
+if [ "$#" -ne 4 ]; then
+	echo "usage: script <fastq.gz> <species> <gencode_version> <nthreads>"
+	exit 1
 fi
 
 infastqgz=$1

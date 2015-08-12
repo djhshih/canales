@@ -2,7 +2,7 @@
 
 if [ "$#" -ne 2 ]; then
 	echo "usage: script <in_dir> <out_dir>"
-	exit
+	exit 1
 fi
 
 scriptpath=$(dirname "$(readlink -f "$0")")

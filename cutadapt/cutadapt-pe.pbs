@@ -8,7 +8,7 @@ set -e
 
 if [ "$#" -ne 1 ]; then
 	echo "usage: script <read1> <read2>"
-	exit
+	exit 1
 fi
 
 scriptpath=$(dirname "$(readlink -f "$0")")

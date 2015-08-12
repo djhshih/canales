@@ -9,7 +9,7 @@ set -e
 
 if [ "$#" -ne 1 ]; then
 	echo "usage: script <infile>"
-	exit
+	exit 1
 fi
 
 scriptpath=$(dirname "$(readlink -f "$0")")
