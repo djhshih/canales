@@ -9,7 +9,7 @@ scriptpath=$(dirname "$(readlink -f "$0")")
 rootpath=$scriptpath/..
 binpath=$rootpath/star
 inpattern='*.fastq.gz'
-script=$binpath/star_for-rsem_gencode_mmu.pbs
+script=$binpath/star-se_for-rsem_gencode_mmu.pbs
 
 indir=$(readlink -f $1)
 outdir=$(readlink -f $2)

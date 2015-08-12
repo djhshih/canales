@@ -19,5 +19,5 @@ infpath=$1
 infname=${infpath##*/}
 outfstem=${infname%%.*}
 
-$scriptpath/star_for-rsem_gencode.sh $infpath mus_musculus M6 8
+$scriptpath/star-se_for-rsem_gencode.sh $infpath mus_musculus M6 8
 
