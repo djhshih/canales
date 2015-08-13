@@ -10,7 +10,7 @@ species=$2
 gencode_version=$3
 nthreads=$4
 
-nixroot STAR \
+$CANALES_CHROOT STAR \
 	--runThreadN ${nthreads} \
 	--genomeDir ${CANALES_DATA_PATH}/star/gencode/${species}/release_${gencode_version} \
 	--sjdbGTFfile ${CANALES_DATA_PATH}/gencode/${species}/release_${gencode_version}/gencode.v${gencode_version}.annotation.gtf \

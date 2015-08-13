@@ -21,7 +21,7 @@ for d in $(ls -1 $indir); do
 			grep "^#\!\|^#PBS" $binpath/bam2fastq_diskless_mem4g.pbs \
 				> job.pbs
 			echo "cd $(pwd)" >> job.pbs
-			echo "nixroot $binpath/bam2fastq_diskless_mem4g.pbs $indir/$d/*.bam" \
+			echo "$CANALES_CHROOT $binpath/bam2fastq_diskless_mem4g.pbs $indir/$d/*.bam" \
 				>> job.pbs
 			qsub job.pbs
 		fi
