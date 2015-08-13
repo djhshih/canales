@@ -3,11 +3,9 @@ set -e
 
 # Convert BAM from the TCAG GBM RNA-seq study to FASTQ
 
-#infile=UNCID_1534648.da360144-ffaf-4f38-bd87-96319fa8d2d4.sorted_genome_alignments.bam
-
 if [ "$#" -ne 1 ]; then
 	echo "usage: script <in.bam>"
-	exit
+	exit 1
 fi
 
 infile=$1

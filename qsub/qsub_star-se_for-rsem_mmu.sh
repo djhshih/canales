@@ -2,14 +2,14 @@
 
 if [ "$#" -ne 2 ]; then
 	echo "usage: script <in_dir> <out_dir>"
-	exit
+	exit 1
 fi
 
 scriptpath=$(dirname "$(readlink -f "$0")")
 rootpath=$scriptpath/..
 binpath=$rootpath/star
 inpattern='*.fastq.gz'
-script=$binpath/star_for-rsem_gencode_mmu.pbs
+script=$binpath/star-se_for-rsem_gencode_mmu.pbs
 
 indir=$(readlink -f $1)
 outdir=$(readlink -f $2)
@@ -28,7 +28,7 @@ for d in $(ls -1 $indir); do
 					echo "set -e" >> $fname.job.pbs
 					echo "cd $(pwd)" >> $fname.job.pbs
 					echo "$script $f" >> $fname.job.pbs
-					echo 'echo "$?" > .$fname.done' >> $fname.job.pbs
+					echo "echo \$? > .$fname.done" >> $fname.job.pbs
 					qsub $fname.job.pbs
 				fi
 			fi

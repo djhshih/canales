@@ -4,7 +4,7 @@ set -e
 
 if [ "$#" -ne 3 ]; then
 	echo "usage: script <in_file> <out_file> <targetlen>"
-	exit
+	exit 1
 fi
 
 infile=$(readlink -f $1)
