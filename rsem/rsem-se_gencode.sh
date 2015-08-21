@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [ "$#" -ne 5 ]; then
 	echo "usage: script <bam> <species> <genome_version> <gencode_version> <nthreads>"
