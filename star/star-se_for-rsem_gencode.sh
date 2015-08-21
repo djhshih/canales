@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 if [ "$#" -ne 4 ]; then
 	echo "usage: script <fastq.gz> <species> <gencode_version> <nthreads>"
