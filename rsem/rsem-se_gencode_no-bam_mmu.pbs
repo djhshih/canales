@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N rsem-se_gencode_mmu
+#PBS -V
+#PBS -l nodes=1:ppn=8,vmem=12g,gres=localhd:50,walltime=8:00:00
+set -e
+
+# Align sequences to genome and transcriptome using STAR
+# for downstream analysis with RSEM
+
+if [ "$#" -ne 1 ]; then
+	echo "usage: script <infile>"
+	exit 1
+fi
+
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
+infpath=$1
+infname=${infpath##*/}
+outfstem=${infname%%.*}
+
+$scriptpath/rsem-se_gencode_no-bam.sh $infpath mus_musculus GRCm38 M6 8
+
