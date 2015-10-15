@@ -1,7 +1,7 @@
 #!/bin/bash
 #PBS -N rsem-se_gencode_hsa
 #PBS -V
-#PBS -l nodes=1:ppn=8,vmem=12g,gres=localhd:50,walltime=8:00:00
+#PBS -l nodes=1:ppn=8,vmem=12g,gres=localhd:50,walltime=24:00:00
 set -e
 
 # Align sequences to genome and transcriptome using STAR

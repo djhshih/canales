@@ -18,7 +18,7 @@ mkdir -p $outdir && cd $outdir
 
 for d in $(ls -1 $indir); do
 	if [ -d "$indir/$d" ]; then
-		echo "Processing $indir/$d ..."
+		echo -n "Processing $d ... "
 		mkdir -p $outdir/$d && cd $outdir/$d
 		for f in $indir/$d/$inpattern; do
 			if [ -f $f ]; then
@@ -30,6 +30,9 @@ for d in $(ls -1 $indir); do
 					echo "$script $f" >> $fname.job.pbs
 					echo "echo \$? > .$fname.done" >> $fname.job.pbs
 					qsub $fname.job.pbs
+					echo "submitted."
+				else
+					echo "skipped."
 				fi
 			fi
 		done
