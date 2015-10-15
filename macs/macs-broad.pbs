@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -N macs-broad
+#PBS -V
+#PBS -l nodes=1:ppn=1,vmem=60g,gres=localhd:50,walltime=24:00:00
+set -e
+
+# Model-based Analysis of ChIP-Seq 
+
+if [ "$#" -ne 2 ]; then
+	echo "usage: script <ip.bam> <control.bam>"
+	exit 1
+fi
+
+scriptpath=$(dirname "$(readlink -f "$0")")
+rootpath=$scriptpath/..
+
+infpath=$1
+inf2path=$2
+infname=${infpath##*/}
+outfstem=${infname%%.*}
+
+sample=${infname%%_*}
+
+module load MACS/2.0.10
+
+macs2 callpeak -t $infpath -c $inf2path -f BAM -g hs -B -n $sample --broad --broad-cutoff 0.1
+
